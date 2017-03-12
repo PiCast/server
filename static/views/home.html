@@ -1,0 +1,46 @@
+<div class="row" id="currently_playing">
+    <div class="col-xs-12 col-sm-2 col-md-2">
+        <img id="video-image" class="img-responsive" ng-src="{{player_status.thumbnail}}"
+             ng-show="player_status.thumbnail"/>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-8">
+        <div class="title">
+            {{player_status.title}}
+        </div>
+        <div class="time">
+            <rzslider rz-slider-model="player_status.position"
+                      rz-slider-options="{
+                ceil: player_status.duration,
+                translate: formatSliderLabel
+             }"></rzslider>
+            <!--<span id="position">{{player_status.position  | secondsToTime | date:'HH:mm:ss'}}</span>-->
+            <!--<span id="duration">{{player_status.duration  | secondsToTime | date:'HH:mm:ss'}}</span>-->
+        </div>
+        <div id="controls">
+            <i class="glyphicon glyphicon-pause" player-action="'pause'"></i>
+            <i class="glyphicon glyphicon-stop" player-action="'stop'"></i>
+            <i class="glyphicon glyphicon-backward" player-action="'backward'"></i>
+            <i class="glyphicon glyphicon-forward" player-action="'forward'"></i>
+            <i class="glyphicon glyphicon-step-forward" player-action="'nextqueue'"></i>
+            <i class="glyphicon glyphicon-volume-down" player-action="'vol_down'"></i>
+            <i class="glyphicon glyphicon-volume-up" player-action="'vol_up'"></i>
+        </div>
+    </div>
+</div>
+<form id="stream_form" class="form-inline">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="media_url" placeholder="Media's URL">
+            <div class="input-group-btn">
+                <button id="addqueue" title="Add current video to queue" ng-click="queue(media_url)" class="btn btn-info form_button"
+                        type="button">
+                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                </button>
+                <button id="castbtn" class="btn btn-danger form_button" title="Cast now" type="button" ng-click="cast(media_url)">
+                    <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+<div ng-include="'/static/views/playlist.html'"></div>

@@ -17,7 +17,6 @@
   margin: 10px;
 }
 
-
 .input-group {
   margin-top: 20px;
   margin-bottom: -10px;
@@ -25,48 +24,56 @@
   max-width: 500px;
 }
 
-
 span.glyphicon {
   font-size: 1.4em;
 }
 
-
 #currently_playing {
   margin-top: 20px;
+  .title{
+    font-weight: bold;
+  }
   progress {
     width: 100%;
     display: block;
   }
-  .time{
+  .time {
     float: left;
     width: 100%;
-    .slider{
+    .slider {
       width: 100%;
       display: block;
     }
-    #position{
-      float:left;
+    #position {
+      float: left;
     }
-    #duration{
+    #duration {
       float: right;
     }
   }
   #controls {
     font-size: 30px;
-    i{
+    i {
       margin-right: 10px;
     }
   }
 }
 
-#playlist{
-  .item{
+#playlist {
+  .item {
     float: left;
-    .col-xs-2{
+    width: 100%;
+    .cover-image {
+      height: 80px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .col-xs-2 {
       padding: 0;
     }
   }
-  .item:not(:first-child){
+  .item:not(:first-child) {
     margin-top: 10px;
   }
 }

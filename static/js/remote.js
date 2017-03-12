@@ -96,37 +96,6 @@ $(function () {
         }
     });
 
-    $("#cancelshut").click(function () {
-        mkrequest("/shutdown?time=cancel", 4)
-    });
-
-    $("#nextqueue").click(function () {
-        mkrequest("/video?control=next", 1)
-    });
-
-    $("#pause").click(function () {
-        mkrequest("/video?control=pause", 0);
-    });
-
-    $("#stop").click(function () {
-        mkrequest("/video?control=stop", 0);
-    });
-
-    $("#backward").click(function () {
-        mkrequest("/video?control=left", 0);
-    });
-
-    $("#forward").click(function () {
-        mkrequest("/video?control=right", 0);
-    });
-
-    $("#vol_down").click(function () {
-        mkrequest("/sound?vol=less", 0);
-    });
-
-    $("#vol_up").click(function () {
-        mkrequest("/sound?vol=more", 0);
-    });
 
     function secondsToHms(d) {
         d = Number(d);
@@ -180,7 +149,7 @@ $(function () {
              $.each(playlist, function (key, item) {
                     //console.log(item);
                     var row = '<div class="item">' +
-                        '<div class="pull-left col-xs-2"><img class="img-responsive col-xs-12" src="'+ item.thumbnail+'"></div>' +
+                        '<div class="pull-left col-xs-2 cover-image" style="background-image: url('+ item.thumbnail +');"></div>' +
                         '<div class="pull-left col-xs-10">'+ item.title +' ['+ secondsToHms(item.duration) +']</div>'+
                         '</div>'
 

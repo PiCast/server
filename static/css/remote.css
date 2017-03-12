@@ -24,6 +24,8 @@ span.glyphicon {
 
 #currently_playing {
   margin-top: 20px; }
+  #currently_playing .title {
+    font-weight: bold; }
   #currently_playing progress {
     width: 100%;
     display: block; }
@@ -43,7 +45,13 @@ span.glyphicon {
       margin-right: 10px; }
 
 #playlist .item {
-  float: left; }
+  float: left;
+  width: 100%; }
+  #playlist .item .cover-image {
+    height: 80px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; }
   #playlist .item .col-xs-2 {
     padding: 0; }
 #playlist .item:not(:first-child) {

@@ -1,0 +1,9 @@
+<h2>Up next</h2>
+<div id="playlist" ng-controller="PlaylistCtrl" ng-show="playlist">
+    <div class="item" ng-repeat="item in playlist">
+        <div class="pull-left col-xs-2 cover-image" style="background-image: url({{item.thumbnail}});">
+        </div>
+
+        <div class="pull-left col-xs-10">{{item.title}}  [{{ item.duration | secondsToTime | date:'HH:mm:ss' }}]</div>
+    </div>
+</div>

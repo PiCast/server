@@ -92,14 +92,12 @@ def response(response, status=200):
 
 @application.route('/static/<path:path>')
 def server_static(path):
-    logger.info('static/' + path)
     return send_from_directory('static', path)
 
 
 @application.route('/', methods=['GET'])
 @application.route('/remote', methods=['GET'])
 def get_index():
-    logger.info('Remote page requested.')
     return send_from_directory('static', 'index.html')
 
 
@@ -252,4 +250,4 @@ def webstate():
     return currentState
 
 
-application.run(debug=True, host='0.0.0.0', port=2020, use_evalex=False)
+application.run(debug=False, host='0.0.0.0', port=2020, use_evalex=False)
