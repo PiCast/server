@@ -16,21 +16,37 @@ angular.module('picastApp')
         };
 
         $scope.cast = function (url) {
+            if (!url) {
+                notify("You must enter a valid url!");
+                return;
+            }
+            notify("Trying to get video stream URL. Please wait ~ 10-20 seconds.");
             PiCastService.castNow(url).then(function (result) {
                 if (result == "1") {
                     var state = 'success';
                     var msg = 'Success ! Video should now be playing.';
+                    notify.closeAll();
                     notify(msg)
+                } else {
+                    notify("An error occured during the treatment of the demand. Please make sure the link/action is compatible");
                 }
             })
         };
 
         $scope.queue = function (url) {
+            if (!url) {
+                notify("You must enter a valid url!");
+                return;
+            }
+            notify("Trying to add video to queue.");
             PiCastService.addToQueue(url).then(function (result) {
                 if (result == "1") {
                     var state = 'success';
                     var msg = 'Success ! Video has been added to queue.';
+                    notify.closeAll();
                     notify(msg);
+                } else {
+                    notify("An error occured during the treatment of the demand. Please make sure the link/action is compatible");
                 }
             })
         };

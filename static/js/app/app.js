@@ -27,7 +27,20 @@ angular
             .otherwise({
                 redirectTo: '/'
             });
+    }).config(function ($provide, $httpProvider) {
+    $provide.factory('httpInterceptor', function ($q, $rootScope) {
+        return {
+            response: function (response) {
+                return response || $q.when(response);
+            },
+            responseError: function (rejection) {
+                $rootScope.$emit('error', "Error ! Make sure the ip/port are corrects, and the server is running.");
+                return $q.reject(rejection);
+            }
+        };
     });
+    $httpProvider.interceptors.push('httpInterceptor');
+});
 /*.factory('SocketFactory', function (socketFactory) {
  return socketFactory();
  });*/

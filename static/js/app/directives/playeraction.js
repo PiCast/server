@@ -7,7 +7,7 @@
 	 * # passwordGen
 	 */
 	angular.module('picastApp')
-		.directive('playerAction', ['PiCastService', function (PiCastService) {
+		.directive('playerAction', ['PiCastService', 'notify', function (PiCastService, notify) {
 			return {
 				restrict: 'A',
 				scope: {
@@ -15,7 +15,11 @@
 				},
 				link: function (scope, el) {
                     el.click(function () {
-                        PiCastService.doAction(scope.action)
+                        PiCastService.doAction(scope.action).then(function () {
+							if(scope.action == 'nextqueue'){
+								  notify("Success ! Video should now be playing.");
+							}
+                        })
                     })
 				}
 			};

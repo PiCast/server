@@ -16,7 +16,7 @@ with open('picast.conf') as f:
 
 # Setting log
 logging.basicConfig(filename='PiCast.log', format="%(asctime)s - %(levelname)s - %(message)s",
-                    datefmt='%m-%d %H:%M:%S', level=logging.DEBUG)
+                    datefmt='%m-%d %H:%M:%S', level=logging.INFO)
 logger = logging.getLogger("PiCast")
 
 # Creating handler to print messages on stdout
@@ -121,8 +121,8 @@ def do_stream():
             logger.debug('URL containing localhost adress . Replacing with remote ip :' + ip)
             url = url.replace('localhost', ip).replace('127.0.0.1', ip)
 
-        if 'subtitles' in request.query:
-            subtitles = request.query['subtitles']
+        if 'subtitles' in request.args:
+            subtitles = request.args['subtitles']
             logger.debug('Subtitles link is ' + subtitles)
             urllib.urlretrieve(subtitles, "subtitle.srt")
             launchvideo(url, True)
