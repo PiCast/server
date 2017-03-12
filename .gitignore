@@ -24,7 +24,7 @@ wheels/
 .installed.cfg
 *.egg
 PiCast.log
-.idea
+state.tmp
 video.queue
 # PyInstaller
 #  Usually these files are written by a python script from a template
