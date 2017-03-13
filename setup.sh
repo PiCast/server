@@ -52,7 +52,8 @@ cd /opt
 git clone https://github.com/PiCast/server.git PiCast
 chmod +x /opt/PiCast/PiCast.sh
 chown -R "$USER":"$USER" /opt/PiCast/PiCast.sh
-
+cd PiCast
+git submodule update --init --recursive
 echo ""
 echo "============================================================"
 echo ""

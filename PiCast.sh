@@ -9,6 +9,7 @@ if [ $1 = "start" ]; then
 	fi
 	echo "Checking for updates."
 	git pull
+	git submodule update --init --recursive
 	echo "Starting PiCast server."
 	mkfifo /tmp/cmd >/dev/null 2>&1
 	./server.py &
