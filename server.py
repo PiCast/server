@@ -15,6 +15,7 @@ with open('picast.conf') as f:
     config = json.load(f)
 
 # Setting log
+open('PiCast.log', 'w').close()  # Reset queue
 logging.basicConfig(filename='PiCast.log', format="%(asctime)s - %(levelname)s - %(message)s",
                     datefmt='%m-%d %H:%M:%S', level=logging.INFO)
 logger = logging.getLogger("PiCast")
@@ -254,9 +255,6 @@ def update_playlist():
     f = open('video.queue', 'w')
     f.write(file_content)
     f.close()
-
-    logger.info('Update playlist ploxx')
-    logger.info(playlist)
     return "OK"
 
 

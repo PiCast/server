@@ -40,7 +40,7 @@ angular.module('picastApp')
             }
             notify("Trying to add video to queue.");
             PiCastService.addToQueue(url).then(function (result) {
-                if (result == "1") {
+                if (result == "2") {
                     var state = 'success';
                     var msg = 'Success ! Video has been added to queue.';
                     notify.closeAll();

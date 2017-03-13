@@ -15,7 +15,7 @@ angular.module('picastApp')
             'Karma'
         ];
         PiCastService.getPlaylist();
-        //$interval(PiCastService.getPlaylist, 10000);
+        $interval(PiCastService.getPlaylist, 10000);
         $scope.sortableOptions = {
             handle: '.cover-image',
             update: function () {
