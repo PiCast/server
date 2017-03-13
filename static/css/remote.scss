@@ -30,7 +30,7 @@ span.glyphicon {
 
 #currently_playing {
   margin-top: 20px;
-  .title{
+  .title {
     font-weight: bold;
   }
   progress {
@@ -68,9 +68,40 @@ span.glyphicon {
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
+      display: table;
+      width: 100%;
+      .sorter {
+        height: 100%;
+        width: 100%;
+        font-size: 25px;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        color: #fff;
+        cursor: pointer;
+        .glyphicon {
+          border-radius: 20px;
+          border: 2px solid white;
+          height: 40px;
+          width: 40px;
+          padding-top: 6px;
+        }
+      }
     }
     .col-xs-2 {
       padding: 0;
+    }
+    .duration{
+      color: #8b91a2;
+    }
+    .delete{
+      float: right;
+      display: inline-block;
+      font-size: 19px;
+      cursor: pointer;
+    }
+    .delete:hover{
+      color: #d43f3a;
     }
   }
   .item:not(:first-child) {

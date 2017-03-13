@@ -37,6 +37,11 @@ def launchvideo(url, sub=False):
     os.system("echo . > /tmp/cmd &")  # Start signal for OMXplayer
 
 
+def stopPlaying():
+    global currently_playing
+    currently_playing = {}
+
+
 def queuevideo(url, onlyqueue=False):
     logger.info('Extracting source video ({url}) URL, before adding to queue...'.format(url=url))
 
@@ -201,14 +206,14 @@ def getStatus():
 
 
 def getPlaylist():
-    currently_playing['queue'] = []
+    queue = []
     with open('video.queue', 'r') as f:
         for line in f:
             if line != '':
                 data = json.loads(line)
-                currently_playing['queue'].append(data)
+                queue.append(data)
     f.close()
-    return currently_playing['queue']
+    return queue
 
 
 def setVolume(vol):

@@ -36,6 +36,11 @@
                         return result.data;
                     });
                 },
+                updatePlaylist: function (playlist) {
+                    return $http.post('/playlist', playlist).then(function (result) {
+                        return result.data;
+                    })
+                },
                 scheduleShutdown: function (seconds) {
                     return $http.get('/shutdown?time=' + seconds).then(function (result) {
                         return result.data;
@@ -73,6 +78,7 @@
                     }
 
                     return $http.get(endpoint).then(function (result) {
+                        $rootScope.$emit('action_'+ action)
                         return result.data;
                     })
                 }

@@ -51,9 +51,35 @@ span.glyphicon {
     height: 80px;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center; }
+    background-position: center;
+    display: table;
+    width: 100%; }
+    #playlist .item .cover-image .sorter {
+      height: 100%;
+      width: 100%;
+      font-size: 25px;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      color: #fff;
+      cursor: pointer; }
+      #playlist .item .cover-image .sorter .glyphicon {
+        border-radius: 20px;
+        border: 2px solid white;
+        height: 40px;
+        width: 40px;
+        padding-top: 6px; }
   #playlist .item .col-xs-2 {
     padding: 0; }
+  #playlist .item .duration {
+    color: #8b91a2; }
+  #playlist .item .delete {
+    float: right;
+    display: inline-block;
+    font-size: 19px;
+    cursor: pointer; }
+  #playlist .item .delete:hover {
+    color: #d43f3a; }
 #playlist .item:not(:first-child) {
   margin-top: 10px; }
 

@@ -108,7 +108,7 @@ def do_stream():
     logger.debug('Received URL to cast: ' + url)
 
     if request.args.get('slow', False):
-        if request.query['slow'] in ["True", "true"]:
+        if request.args['slow'] in ["True", "true"]:
             config["slow_mode"] = True
         else:
             config["slow_mode"] = False
@@ -183,6 +183,7 @@ def control_video():
         return "1"
     elif control in ["stop", "next"]:
         logger.info('Command : stop video')
+        stopPlaying()
         os.system("echo -n q > /tmp/cmd &")
         return "1"
     elif control == "right":
@@ -240,6 +241,23 @@ def get_status():
 @crossdomain(origin='*')
 def get_playlist():
     return jsonify(getPlaylist())
+
+
+@application.route('/playlist', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*')
+def update_playlist():
+    playlist = request.json
+    file_content = ''
+    for video in playlist:
+        file_content += json.dumps(video) + "\n"
+
+    f = open('video.queue', 'w')
+    f.write(file_content)
+    f.close()
+
+    logger.info('Update playlist ploxx')
+    logger.info(playlist)
+    return "OK"
 
 
 @application.route('/running', methods=['GET'])

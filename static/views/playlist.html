@@ -1,9 +1,23 @@
 <h2>Up next</h2>
 <div id="playlist" ng-controller="PlaylistCtrl" ng-show="playlist">
-    <div class="item" ng-repeat="item in playlist">
-        <div class="pull-left col-xs-2 cover-image" style="background-image: url({{item.thumbnail}});">
-        </div>
+    <div ui-sortable="sortableOptions" ng-model="playlist">
+        <div class="item" ng-repeat="item in playlist" playlist-row>
+            <div class="pull-left col-xs-2">
+                <div class="cover-image" style="background-image: url({{item.thumbnail}});">
+                    <div class="sorter">
+                        <i class="glyphicon hidden glyphicon-sort"></i>
+                    </div>
+                </div>
+            </div>
 
-        <div class="pull-left col-xs-10">{{item.title}}  [{{ item.duration | secondsToTime | date:'HH:mm:ss' }}]</div>
+            <div class="pull-left col-xs-10">
+                <div class="title">{{item.title}}</div>
+                <div class="delete" ng-click="deleteVideo(item)"><i class="glyphicon hidden glyphicon-trash"></i></div>
+                <div class="duration">[{{ item.duration | secondsToTime | date:'HH:mm:ss' }}]</div>
+            </div>
+        </div>
+    </div>
+    <div class="item" ng-show="playlist.length === 0">
+        Nothing in playlist
     </div>
 </div>

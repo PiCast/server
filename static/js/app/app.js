@@ -15,7 +15,8 @@ angular
         'ngRoute',
         'ngSanitize',
         'rzModule',
-        'cgNotify'
+        'cgNotify',
+        'ui.sortable'
     ])
     .config(function ($routeProvider) {
         $routeProvider
