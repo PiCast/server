@@ -266,4 +266,4 @@ def webstate():
     return currentState
 
 
-application.run(debug=False, host='0.0.0.0', port=2020, use_evalex=False)
+application.run(debug=False, host='0.0.0.0', port=2020, use_evalex=False, threaded=True)
